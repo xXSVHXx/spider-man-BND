@@ -89,17 +89,18 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 50px;
         }
 
         .story-block {
             background: linear-gradient(135deg, rgba(11,26,42,0.9) 0%, rgba(5,10,16,0.9) 100%);
             border: 2px solid #1a2a3a;
             border-radius: 15px;
-            padding: 30px;
+            padding: 30px 40px;
             position: relative;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 85%;
         }
 
         .story-block:hover {
@@ -108,11 +109,10 @@
             border-color: var(--spidey-red);
         }
 
-        /* Etiquetas para Inicio, Desarrollo, Conclusión */
+        /* Etiquetas para las partes de la historia */
         .story-badge {
             position: absolute;
             top: -20px;
-            left: 30px;
             background-color: var(--spidey-red);
             color: #fff;
             font-family: 'Bangers', cursive;
@@ -124,8 +124,9 @@
         }
 
         .story-block h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-top: 10px;
+            margin-bottom: 15px;
             color: #fff;
         }
 
@@ -133,19 +134,40 @@
             font-size: 1.15rem;
             line-height: 1.7;
             color: #ddd;
+            margin: 0;
         }
 
-        /* Alternar alineación para darle estilo de cómic */
-        .story-block:nth-child(even) {
-            border-left: 5px solid var(--spidey-red);
-        }
+        /* Alternar alineación para el estilo de cómic (Zig-Zag) */
+        /* Bloques Impares (1 y 3) - Izquierda */
         .story-block:nth-child(odd) {
-            border-right: 5px solid var(--spidey-red);
-            text-align: right;
+            align-self: flex-start;
+            border-left: 6px solid var(--spidey-red);
+            text-align: left;
         }
         .story-block:nth-child(odd) .story-badge {
-            left: auto;
+            left: 30px;
+        }
+
+        /* Bloques Pares (2 y 4) - Derecha */
+        .story-block:nth-child(even) {
+            align-self: flex-end;
+            border-right: 6px solid var(--spidey-red);
+            text-align: right;
+            background: linear-gradient(225deg, rgba(11,26,42,0.9) 0%, rgba(5,10,16,0.9) 100%);
+        }
+        .story-block:nth-child(even) .story-badge {
             right: 30px;
+        }
+
+        /* Badge especial para los antecedentes */
+        .badge-preludio {
+            background-color: #555;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        .story-block:hover .badge-preludio {
+            background-color: var(--spidey-red);
+            box-shadow: 0 4px 10px rgba(226, 54, 54, 0.5);
+            transition: all 0.3s ease;
         }
 
         /* Sección de Reparto (Cuadros) */
@@ -214,6 +236,12 @@
             font-size: 0.9rem;
             color: #777;
         }
+
+        /* Responsividad para móviles */
+        @media (max-width: 768px) {
+            .story-block { width: 90%; align-self: center !important; text-align: left !important; border-right: none !important; border-left: 4px solid var(--spidey-red) !important; }
+            .story-block:nth-child(even) .story-badge { right: auto; left: 30px; }
+        }
     </style>
 </head>
 <body>
@@ -228,30 +256,37 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE LA HISTORIA DIVIDIDA EN BLOQUES -->
+    <!-- SECCIÓN DE LA HISTORIA DIVIDIDA EN 4 BLOQUES -->
     <section>
-        <h2 class="section-title">La Historia</h2>
+        <h2 class="section-title">El Archivo Arácnido</h2>
         <div class="story-container">
             
+            <!-- Bloque PREVIO: ANTECEDENTES -->
+            <div class="story-block">
+                <div class="story-badge badge-preludio">ANTECEDENTES</div>
+                <h3>El Sacrificio y el Olvido</h3>
+                <p>Hace cuatro años, para salvar el multiverso, Peter Parker tomó la decisión más difícil de su vida: pedirle al Doctor Strange que borrara su existencia de la memoria colectiva. Hoy, el mundo ama a Spider-Man, pero nadie sabe quién es el chico debajo de la máscara. Sus amigos, MJ y Ned, lograron entrar al MIT y continúan con sus vidas, completamente ajenos al sacrificio que les permitió tener un futuro. Sin familia, sin amigos y sin vida personal, Peter se sumergió por completo en su rol como justiciero, viviendo como un fantasma en su propia ciudad.</p>
+            </div>
+
             <!-- Bloque 1: INICIO -->
             <div class="story-block">
                 <div class="story-badge">PARTE 1: INICIO</div>
-                <h3>El Fantasma de Nueva York</h3>
-                <p>Han pasado cuatro años desde que el hechizo del Doctor Strange borró a Peter Parker de la existencia. Mientras Spider-Man sigue siendo el protector de la ciudad, Peter vive en la indigencia emocional. Aislado y sumergido en su labor heroica 24/7 junto a la detective Jean DeWolff, observa desde las sombras cómo MJ y Ned continúan sus vidas en el MIT, sin recordar absolutamente nada de él.</p>
+                <h3>La Amenaza Invisible</h3>
+                <p>Operando 24/7 y colaborando estrechamente con la detective Jean DeWolff, la implacable rutina heroica de Peter se ve interrumpida por un enemigo nunca antes visto. Una misteriosa entidad psiónica comienza a poseer los cuerpos de los ciudadanos a voluntad. Saltando de huésped en huésped sin dejar rastro, este antagonista desata el caos con un objetivo claro: infiltrarse en las instalaciones de máxima seguridad del Departamento de Control de Daños (DODC) y liberar a criminales encarcelados.</p>
             </div>
 
             <!-- Bloque 2: DESARROLLO -->
             <div class="story-block">
                 <div class="story-badge">PARTE 2: DESARROLLO</div>
-                <h3>Mutación y Pérdida de Control</h3>
-                <p>Todo se complica cuando una amenaza psiónica invisible comienza a poseer personas, desatando el caos para infiltrarse en el Departamento de Control de Daños (DODC) y liberar criminales como Scorpion. La presión, sumada al dolor de ver a MJ regresar a la ciudad con una nueva pareja, provoca una mutación violenta en el ADN de Peter. Sus poderes arácnidos se vuelven inestables y agresivos. Tras perder el control y dar una paliza brutal a Scorpion, Peter entra en pánico y busca a Bruce Banner para intentar curar su condición, pero el enemigo descubre su identidad y secuestra a MJ.</p>
+                <h3>Mutación y Colapso</h3>
+                <p>La tensión estalla cuando MJ y Ned regresan a Nueva York. Al presenciar a MJ feliz con una nueva pareja, Peter sufre un ataque de pánico severo que actúa como detonante de un trauma reprimido. Esto provoca una mutación violenta en su ADN: desarrolla telarañas orgánicas y sus instintos arácnidos se tornan salvajes e incontrolables. Dominado por esta agresividad, casi asesina a Scorpion a golpes. Aterrorizado de sí mismo, busca desesperadamente al Dr. Bruce Banner por una cura, pero la entidad psiónica descubre su identidad secreta y secuestra a MJ.</p>
             </div>
 
             <!-- Bloque 3: CONCLUSIÓN -->
             <div class="story-block">
                 <div class="story-badge">PARTE 3: CONCLUSIÓN</div>
-                <h3>El Sacrificio y la Conexión</h3>
-                <p>Con la ayuda de The Punisher, Peter descubre que la amenaza es Jean Grey, una joven mutante traumatizada que busca rescatar a su hermana secuestrada por el DODC. En el clímax, Jean posee a Bruce Banner, desatando la furia de Hulk. Para evitar una masacre, Peter hace algo inesperado: en lugar de luchar, conecta su mente con la de Jean. A través de sus propios recuerdos sobre la Tía May, le enseña el significado de la empatía y el sacrificio. Logran calmar la situación, y aunque Peter resulta gravemente herido tras proteger a Jean de un disparo de Punisher, sobrevive, aceptando por fin que no puede aislarse de su humanidad.</p>
+                <h3>Redención Empática</h3>
+                <p>Obligado a actuar, Spider-Man se alía con The Punisher y descubre que la amenaza es Jean Grey, una joven mutante traumatizada que intenta rescatar a su hermana del DODC. En la batalla final, Jean posee a Bruce Banner desatando a Hulk. Entendiendo que los golpes no ganarán esta pelea, Peter conecta su mente con la de Jean. A través de sus propios recuerdos con la Tía May, le enseña el verdadero significado de la pérdida, la empatía y la responsabilidad. Tras recibir un disparo destinado a ella y salvarla, Peter comprende finalmente que aislarse de su humanidad nunca fue la solución.</p>
             </div>
 
         </div>
