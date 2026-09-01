@@ -1,155 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spider‑Man: New Day – Presentation</title>
-  <style>
-    :root {
-      --spider-red: #FF0000;
-      --spider-blue: #0000FF;
-      --accent: #FF9900; /* amarillo similar al logo */
-    }
-    /* Fondo global con gradiente rojo‑azul */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: 
-        radial-gradient(80% 80%, var(--spider-red), var(--spider-blue)),
-        var(--accent);
-      min-height: 100vh;
-      color: #f0f0f0;
-    }
-    /* Estilo "tarjeta" para cada sección */
-    .card {
-      width: 90%;
-      max-width: 800px;
-      margin: 4rem auto 2rem;
-      padding: 2rem 2.5rem;
-      background: rgba(255,255,255,0.15);
-      border-radius: 12px;
-      box-shadow: 
-        0 10px 30px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.2);
-      /* animación de entrada */
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Navbar estilo "cinta" */
-    nav {
-      position: fixed;
-      top: 0; right: 0;
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 1.5rem;
-      background: linear-gradient(90deg, var(--spider-red), var(--spider-blue));
-      z-index: 10;
-    }
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-      text-shadow: 0 0 8px #000;
-    }
-    h2 {
-      font-size: 1.4rem;
-      color: var(--spider-white, #ffffff);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-    p {
-      font-size: 1rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-    /* Enlaces de navegación interna */
-    .nav-link {
-      display: block;
-      padding: .5rem 0;
-      border-bottom: 2px solid transparent;
-      transition: border-color .2s, color .2s;
-    }
-    .nav-link:hover {
-      border-color: var(--spider-blue);
-      color: var(--spider-blue);
-    }
-    /* Reducir efecto "parpadeo" en scroll */
-    @media (prefers-reduced-motion: reduce) {
-      .card { transition: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Man: Brand New Day</title>
+    <style>
+        /* Paleta de colores y fuentes */
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --spidey-red: #e23636;
+            --spidey-blue: #0b1a2a;
+            --text-light: #f4f4f4;
+            --dark-bg: #050a10;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+            color: var(--spidey-red);
+        }
+
+        /* Sección Hero (Frame de la película) */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 5px solid var(--spidey-red);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .hero img:hover {
+            opacity: 1;
+        }
+
+        .hero-text {
+            position: absolute;
+            text-align: center;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        /* Sección de Información (Reseña) */
+        .info-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(11, 26, 42, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(226, 54, 54, 0.2);
+            border-left: 4px solid var(--spidey-red);
+        }
+
+        .info-section p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .info-section ul {
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Sección de Reparto (Cuadros) */
+        .cast-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .cast-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .cast-card {
+            background-color: var(--spidey-blue);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: transform 0.3s, border 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .cast-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--spidey-red);
+        }
+
+        .cast-image-container {
+            width: 100%;
+            height: 300px;
+            background-color: #1a2a3a;
+        }
+
+        .cast-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cast-info {
+            padding: 15px;
+        }
+
+        .cast-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .cast-info p {
+            margin: 0;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            border-top: 2px solid var(--spidey-red);
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Barra de navegación fija -->
-  <nav>
-    <a class="nav-link" href="#peter">Peter Parker Ahora</a>
-    <a class="nav-link" href="#trabajo">Trabajo como Spider‑Man</a>
-    <a class="nav-link" href="#vida">Vida de Peter</a>
-    <a class="nav-link" href="#quiebre">Punto de Quiebre</a>
-    <a class="nav-link" href="#mutante">Cómo afecta lo mutante</a>
-  </nav>
+    <header class="hero">
+        <img src="URL_DE_TU_FRAME.jpg" alt="Frame de Spider-Man Brand New Day">
+        <div class="hero-text">
+            <h1>Spider-Man</h1>
+            <h2>Brand New Day</h2>
+        </div>
+    </header>
 
-  <!-- Sección 1 -->
-  <section class="card" id="peter">
-    <h2>Peter Parker Ahora</h2>
-    <p>
-      Peter Parker vuelve a ser el hombre común después de los eventos de “Brand New Day”. Aquí se explora su intento de equilibrar su vida civil con el legado de ser Spider‑Man, sin el peso constante de la responsabilidad heroica.
-    </p>
-  </section>
+    <main class="info-section">
+        <h2>El peso de la soledad y la verdadera prueba del héroe</h2>
+        
+        <p><strong>Un héroe borrado del mapa:</strong> Han pasado cuatro años desde que el hechizo del Doctor Strange reescribió la realidad. El mundo sigue conociendo a Spider-Man, pero Peter Parker es un fantasma. <em>Spider-Man: Brand New Day</em> explora el coste psicológico del sacrificio: Peter vive en la indigencia emocional, observando en silencio cómo MJ y Ned continúan sus vidas, completamente ajenos a su existencia.</p>
+        
+        <p><strong>Conflicto dual:</strong> La película construye su tensión narrativa sobre dos pilares destructivos:</p>
+        <ul>
+            <li><strong>La amenaza psiónica:</strong> Un enemigo intangible capaz de poseer cuerpos a voluntad aterroriza la ciudad, buscando infiltrarse en el DODC.</li>
+            <li><strong>La degradación de Peter:</strong> El trauma reprimido detona una alteración en su ADN. Sus poderes mutan de forma agresiva (telarañas orgánicas, sentidos hipertrofiados), perdiendo el control emocional.</li>
+        </ul>
 
-  <!-- Sección 2 -->
-  <section class="card" id="trabajo">
-    <h2>Trabajo como Spider‑Man</h2>
-    <p>
-      Como Spider‑Man, Peter protege Nueva York, enfrenta amenazas sobrenaturales y mantiene el legado del héroe, mientras lida con las consecuencias de sus acciones pasadas y su nueva situación vital.
-    </p>
-  </section>
+        <p><strong>El punto de quiebre:</strong> El catalizador ocurre cuando MJ y Ned regresan a Nueva York. La situación se descontrola en un enfrentamiento brutal contra Scorpion, donde Peter pierde el control. Aterrorizado por lo que se está convirtiendo, busca ayuda en Bruce Banner, pero la amenaza descubre su identidad y utiliza a MJ como rehén.</p>
+    </main>
 
-  <!-- Sección 3 -->
-  <section class="card" id="vida">
-    <h2>Vida de Peter superando a su amigo y antigua novia</h2>
-    <p>
-      La trama se centra en la lucha emocional de Peter: intenta superar la pérdida de un amigo cercano y el dolor de una relación pasada, lo que lo deja en un estado de vulnerabilidad y auto‑reflexión.
-    </p>
-  </section>
+    <section class="cast-section">
+        <h2>Reparto Principal</h2>
+        <div class="cast-grid">
+            
+            <div class="cast-card">
+                <div class="cast-image-container">
+                    <img src="URL_FOTO_TOM_HOLLAND.jpg" alt="Tom Holland">
+                </div>
+                <div class="cast-info">
+                    <h3>Tom Holland</h3>
+                    <p>Peter Parker / Spider-Man</p>
+                </div>
+            </div>
 
-  <!-- Sección 4 -->
-  <section class="card" id="quiebre">
-    <h2>Punto de quiebre para Peter</h2>
-    <p>
-      Un evento determinante —ya sea una pérdida, una revelación o una amenaza externa— rompe el equilibrio de Peter, forzándolo a tomar una decisión que cambia su rumbo personal y heroico.
-    </p>
-  </section>
+            <div class="cast-card">
+                <div class="cast-image-container">
+                    <img src="URL_FOTO_ZENDAYA.jpg" alt="Zendaya">
+                </div>
+                <div class="cast-info">
+                    <h3>Zendaya</h3>
+                    <p>Michelle "MJ" Jones-Watson</p>
+                </div>
+            </div>
 
-  <!-- Sección 5 -->
-  <section class="card" id="mutante">
-    <h2>Cómo afecta el hecho de que este mutando</h2>
-    <p>
-      El término “mutante” aquí describe la transformación evolutiva de Peter —tanto en su identidad como en su situación vital. Este cambio impacta en cómo percibe su papel, sus relaciones y su humanidad, abriendo una nueva fase en la historia.
-    </p>
-  </section>
+            <div class="cast-card">
+                <div class="cast-image-container">
+                    <img src="URL_FOTO_JACOB_BATALON.jpg" alt="Jacob Batalon">
+                </div>
+                <div class="cast-info">
+                    <h3>Jacob Batalon</h3>
+                    <p>Ned Leeds</p>
+                </div>
+            </div>
 
-  <!-- Script ligero para hacer aparecer las tarjetas al scroll (opcional) -->
-  <script>
-    // Simple fade‑in cuando las tarjetas entran en vista
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.card');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      });
-      cards.forEach(c => observer.observe(c));
-    });
-  </script>
+            <div class="cast-card">
+                <div class="cast-image-container">
+                    <img src="URL_FOTO_SOPHIE_TURNER.jpg" alt="Sophie Turner">
+                </div>
+                <div class="cast-info">
+                    <h3>Sophie Turner</h3>
+                    <p>Jean Grey</p>
+                </div>
+            </div>
+
+            <div class="cast-card">
+                <div class="cast-image-container">
+                    <img src="URL_FOTO_JON_BERNTHAL.jpg" alt="Jon Bernthal">
+                </div>
+                <div class="cast-info">
+                    <h3>Jon Bernthal</h3>
+                    <p>Frank Castle / The Punisher</p>
+                </div>
+            </div>
+
+            <div class="cast-card">
+                <div class="cast-image-container">
+                    <img src="URL_FOTO_MARK_RUFFALO.jpg" alt="Mark Ruffalo">
+                </div>
+                <div class="cast-info">
+                    <h3>Mark Ruffalo</h3>
+                    <p>Dr. Bruce Banner / Hulk</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Spider-Man: Brand New Day Fan Page. Creado para GitHub Pages.</p>
+    </footer>
+
 </body>
 </html>
