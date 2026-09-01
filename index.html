@@ -3,78 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spider‑Man: New Day Analysis</title>
+  <title>Spider‑Man: New Day – Presentation</title>
   <style>
-    /* Colores temáticos de Spider‑Man */
     :root {
       --spider-red: #FF0000;
       --spider-blue: #0000FF;
-      --bg-gradient: linear-gradient(135deg, var(--spider-red), var(--spider-blue));
+      --accent: #FF9900; /* amarillo similar al logo */
     }
+    /* Fondo global con gradiente rojo‑azul */
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, sans-serif;
-      background: var(--bg-gradient);
-      color: #ffffff;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: 
+        radial-gradient(80% 80%, var(--spider-red), var(--spider-blue)),
+        var(--accent);
       min-height: 100vh;
+      color: #f0f0f0;
     }
-    a { color: #fff; text-decoration: none; }
-    nav ul { list-style: none; padding: 0; margin: 0; }
-    nav li { display: inline; margin: 0 10px; }
-    .section {
-      padding: 2rem;
-      margin: 2rem auto;
+    /* Estilo "tarjeta" para cada sección */
+    .card {
+      width: 90%;
       max-width: 800px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin: 4rem auto 2rem;
+      padding: 2rem 2.5rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      box-shadow: 
+        0 10px 30px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+      /* animación de entrada */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
     }
-    h2 { color: #ffffff; margin-bottom: 1rem; }
-    p { font-size: 1rem; line-height: 1.6; }
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Navbar estilo "cinta" */
+    nav {
+      position: fixed;
+      top: 0; right: 0;
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(90deg, var(--spider-red), var(--spider-blue));
+      z-index: 10;
+    }
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-shadow: 0 0 8px #000;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: var(--spider-white, #ffffff);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    /* Enlaces de navegación interna */
+    .nav-link {
+      display: block;
+      padding: .5rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-link:hover {
+      border-color: var(--spider-blue);
+      color: var(--spider-blue);
+    }
+    /* Reducir efecto "parpadeo" en scroll */
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navbar de navegación entre secciones -->
+  <!-- Barra de navegación fija -->
   <nav>
-    <ul>
-      <li><a href="#peter">Peter Parker Ahora</a></li>
-      <li><a href="#trabajo">Trabajo como Spider‑Man</a></li>
-      <li><a href="#vida">Vida de Peter</a></li>
-      <li><a href="#quiebre">Punto de Quiebre</a></li>
-      <li><a href="#mutante">Cómo afecta lo mutante</a></li>
-    </ul>
+    <a class="nav-link" href="#peter">Peter Parker Ahora</a>
+    <a class="nav-link" href="#trabajo">Trabajo como Spider‑Man</a>
+    <a class="nav-link" href="#vida">Vida de Peter</a>
+    <a class="nav-link" href="#quiebre">Punto de Quiebre</a>
+    <a class="nav-link" href="#mutante">Cómo afecta lo mutante</a>
   </nav>
 
-  <!-- Sección 1: Estado actual de Peter Parker -->
-  <section id="peter">
+  <!-- Sección 1 -->
+  <section class="card" id="peter">
     <h2>Peter Parker Ahora</h2>
-    <p>Peter Parker es el alter ego del héroe. En este nuevo capítulo, tras los eventos de "Brand New Day", Peter intenta redefinir su vida fuera del traje, equilibrando su identidad civil con las responsabilidades de ser Spider‑Man.</p>
+    <p>
+      Peter Parker vuelve a ser el hombre común después de los eventos de “Brand New Day”. Aquí se explora su intento de equilibrar su vida civil con el legado de ser Spider‑Man, sin el peso constante de la responsabilidad heroica.
+    </p>
   </section>
 
-  <!-- Sección 2: Su trabajo como Spider‑Man -->
-  <section id="trabajo">
+  <!-- Sección 2 -->
+  <section class="card" id="trabajo">
     <h2>Trabajo como Spider‑Man</h2>
-    <p>Como Spider‑Man, Peter protege Nueva York, enfrenta amenazas sobrenaturales y lucha por mantener el legado del héroe, mientras lida con las consecuencias de sus acciones pasadas.</p>
+    <p>
+      Como Spider‑Man, Peter protege Nueva York, enfrenta amenazas sobrenaturales y mantiene el legado del héroe, mientras lida con las consecuencias de sus acciones pasadas y su nueva situación vital.
+    </p>
   </section>
 
-  <!-- Sección 3: Vida de Peter, superando a amigo y ex‑novia -->
-  <section id="vida">
-    <h2>Vida de Peter tratando de superar a su amigo y antigua novia</h2>
-    <p>La trama explora la lucha emocional de Peter: intenta superar la pérdida de un amigo cercano y el dolor de una relación pasada, lo que lo lleva a un estado de vulnerabilidad y auto‑reflexión.</p>
+  <!-- Sección 3 -->
+  <section class="card" id="vida">
+    <h2>Vida de Peter superando a su amigo y antigua novia</h2>
+    <p>
+      La trama se centra en la lucha emocional de Peter: intenta superar la pérdida de un amigo cercano y el dolor de una relación pasada, lo que lo deja en un estado de vulnerabilidad y auto‑reflexión.
+    </p>
   </section>
 
-  <!-- Sección 4: Punto de quiebre para Peter -->
-  <section id="quiebre">
+  <!-- Sección 4 -->
+  <section class="card" id="quiebre">
     <h2>Punto de quiebre para Peter</h2>
-    <p>Un evento determinante —ya sea una pérdida, una revelación o una amenaza externa— rompe el equilibrio de Peter, forzándolo a tomar una decisión que cambia su rumbo personal y heroico.</p>
+    <p>
+      Un evento determinante —ya sea una pérdida, una revelación o una amenaza externa— rompe el equilibrio de Peter, forzándolo a tomar una decisión que cambia su rumbo personal y heroico.
+    </p>
   </section>
 
-  <!-- Sección 5: Cómo afecta el hecho de que este mutando -->
-  <section id="mutante">
+  <!-- Sección 5 -->
+  <section class="card" id="mutante">
     <h2>Cómo afecta el hecho de que este mutando</h2>
-    <p>El término "mutando" aquí se refiere a la transformación evolutiva de Peter —tanto en su identidad como en su situación vital. Este cambio impacta en cómo percibe su papel, sus relaciones y su propia humanidad, abriendo una nueva fase en la historia.</p>
+    <p>
+      El término “mutante” aquí describe la transformación evolutiva de Peter —tanto en su identidad como en su situación vital. Este cambio impacta en cómo percibe su papel, sus relaciones y su humanidad, abriendo una nueva fase en la historia.
+    </p>
   </section>
 
+  <!-- Script ligero para hacer aparecer las tarjetas al scroll (opcional) -->
+  <script>
+    // Simple fade‑in cuando las tarjetas entran en vista
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      });
+      cards.forEach(c => observer.observe(c));
+    });
+  </script>
 </body>
 </html>
