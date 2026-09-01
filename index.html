@@ -21,6 +21,7 @@
             background-color: var(--dark-bg);
             color: var(--text-light);
             font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -46,60 +47,113 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            opacity: 0.6;
+            transition: opacity 0.4s;
         }
 
         .hero img:hover {
-            opacity: 1;
+            opacity: 0.9;
         }
 
         .hero-text {
             position: absolute;
             text-align: center;
-            text-shadow: 2px 2px 5px #000;
+            text-shadow: 3px 3px 6px #000;
         }
 
         .hero-text h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             margin: 0;
             color: #fff;
             text-transform: uppercase;
         }
+        
+        .hero-text h2 {
+            font-size: 2.5rem;
+            color: var(--spidey-red);
+            margin-top: -10px;
+        }
 
-        /* Sección de Información (Reseña) */
-        .info-section {
-            max-width: 900px;
-            margin: 40px auto;
+        /* Título de sección general */
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin: 60px 0 30px 0;
+            text-transform: uppercase;
+        }
+
+        /* SECCIÓN DE HISTORIA (BLOQUES DINÁMICOS) */
+        .story-container {
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 20px;
-            background: rgba(11, 26, 42, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(226, 54, 54, 0.2);
-            border-left: 4px solid var(--spidey-red);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        .info-section p {
-            line-height: 1.6;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+        .story-block {
+            background: linear-gradient(135deg, rgba(11,26,42,0.9) 0%, rgba(5,10,16,0.9) 100%);
+            border: 2px solid #1a2a3a;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
-        .info-section ul {
-            line-height: 1.6;
-            font-size: 1.1rem;
+        .story-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(226, 54, 54, 0.2);
+            border-color: var(--spidey-red);
+        }
+
+        /* Etiquetas para Inicio, Desarrollo, Conclusión */
+        .story-badge {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background-color: var(--spidey-red);
+            color: #fff;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            padding: 5px 20px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(226, 54, 54, 0.5);
+        }
+
+        .story-block h3 {
+            font-size: 2rem;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .story-block p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* Alternar alineación para darle estilo de cómic */
+        .story-block:nth-child(even) {
+            border-left: 5px solid var(--spidey-red);
+        }
+        .story-block:nth-child(odd) {
+            border-right: 5px solid var(--spidey-red);
+            text-align: right;
+        }
+        .story-block:nth-child(odd) .story-badge {
+            left: auto;
+            right: 30px;
         }
 
         /* Sección de Reparto (Cuadros) */
         .cast-section {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: 80px auto 50px auto;
             padding: 0 20px;
             text-align: center;
-        }
-
-        .cast-section h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
         }
 
         .cast-grid {
@@ -157,12 +211,16 @@
             background-color: #000;
             border-top: 2px solid var(--spidey-red);
             margin-top: 50px;
+            font-size: 0.9rem;
+            color: #777;
         }
     </style>
 </head>
 <body>
 
+    <!-- FRAME DE LA PELÍCULA (HERO) -->
     <header class="hero">
+        <!-- Reemplaza "URL_DE_TU_FRAME.jpg" con el enlace a tu imagen principal -->
         <img src="URL_DE_TU_FRAME.jpg" alt="Frame de Spider-Man Brand New Day">
         <div class="hero-text">
             <h1>Spider-Man</h1>
@@ -170,24 +228,41 @@
         </div>
     </header>
 
-    <main class="info-section">
-        <h2>El peso de la soledad y la verdadera prueba del héroe</h2>
-        
-        <p><strong>Un héroe borrado del mapa:</strong> Han pasado cuatro años desde que el hechizo del Doctor Strange reescribió la realidad. El mundo sigue conociendo a Spider-Man, pero Peter Parker es un fantasma. <em>Spider-Man: Brand New Day</em> explora el coste psicológico del sacrificio: Peter vive en la indigencia emocional, observando en silencio cómo MJ y Ned continúan sus vidas, completamente ajenos a su existencia.</p>
-        
-        <p><strong>Conflicto dual:</strong> La película construye su tensión narrativa sobre dos pilares destructivos:</p>
-        <ul>
-            <li><strong>La amenaza psiónica:</strong> Un enemigo intangible capaz de poseer cuerpos a voluntad aterroriza la ciudad, buscando infiltrarse en el DODC.</li>
-            <li><strong>La degradación de Peter:</strong> El trauma reprimido detona una alteración en su ADN. Sus poderes mutan de forma agresiva (telarañas orgánicas, sentidos hipertrofiados), perdiendo el control emocional.</li>
-        </ul>
+    <!-- SECCIÓN DE LA HISTORIA DIVIDIDA EN BLOQUES -->
+    <section>
+        <h2 class="section-title">La Historia</h2>
+        <div class="story-container">
+            
+            <!-- Bloque 1: INICIO -->
+            <div class="story-block">
+                <div class="story-badge">PARTE 1: INICIO</div>
+                <h3>El Fantasma de Nueva York</h3>
+                <p>Han pasado cuatro años desde que el hechizo del Doctor Strange borró a Peter Parker de la existencia. Mientras Spider-Man sigue siendo el protector de la ciudad, Peter vive en la indigencia emocional. Aislado y sumergido en su labor heroica 24/7 junto a la detective Jean DeWolff, observa desde las sombras cómo MJ y Ned continúan sus vidas en el MIT, sin recordar absolutamente nada de él.</p>
+            </div>
 
-        <p><strong>El punto de quiebre:</strong> El catalizador ocurre cuando MJ y Ned regresan a Nueva York. La situación se descontrola en un enfrentamiento brutal contra Scorpion, donde Peter pierde el control. Aterrorizado por lo que se está convirtiendo, busca ayuda en Bruce Banner, pero la amenaza descubre su identidad y utiliza a MJ como rehén.</p>
-    </main>
+            <!-- Bloque 2: DESARROLLO -->
+            <div class="story-block">
+                <div class="story-badge">PARTE 2: DESARROLLO</div>
+                <h3>Mutación y Pérdida de Control</h3>
+                <p>Todo se complica cuando una amenaza psiónica invisible comienza a poseer personas, desatando el caos para infiltrarse en el Departamento de Control de Daños (DODC) y liberar criminales como Scorpion. La presión, sumada al dolor de ver a MJ regresar a la ciudad con una nueva pareja, provoca una mutación violenta en el ADN de Peter. Sus poderes arácnidos se vuelven inestables y agresivos. Tras perder el control y dar una paliza brutal a Scorpion, Peter entra en pánico y busca a Bruce Banner para intentar curar su condición, pero el enemigo descubre su identidad y secuestra a MJ.</p>
+            </div>
 
+            <!-- Bloque 3: CONCLUSIÓN -->
+            <div class="story-block">
+                <div class="story-badge">PARTE 3: CONCLUSIÓN</div>
+                <h3>El Sacrificio y la Conexión</h3>
+                <p>Con la ayuda de The Punisher, Peter descubre que la amenaza es Jean Grey, una joven mutante traumatizada que busca rescatar a su hermana secuestrada por el DODC. En el clímax, Jean posee a Bruce Banner, desatando la furia de Hulk. Para evitar una masacre, Peter hace algo inesperado: en lugar de luchar, conecta su mente con la de Jean. A través de sus propios recuerdos sobre la Tía May, le enseña el significado de la empatía y el sacrificio. Logran calmar la situación, y aunque Peter resulta gravemente herido tras proteger a Jean de un disparo de Punisher, sobrevive, aceptando por fin que no puede aislarse de su humanidad.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE REPARTO (CUADROS CON IMÁGENES) -->
     <section class="cast-section">
-        <h2>Reparto Principal</h2>
+        <h2 class="section-title">Reparto Principal</h2>
         <div class="cast-grid">
             
+            <!-- Tarjeta 1: Peter Parker -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_TOM_HOLLAND.jpg" alt="Tom Holland">
@@ -198,16 +273,18 @@
                 </div>
             </div>
 
+            <!-- Tarjeta 2: MJ -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_ZENDAYA.jpg" alt="Zendaya">
                 </div>
                 <div class="cast-info">
                     <h3>Zendaya</h3>
-                    <p>Michelle "MJ" Jones-Watson</p>
+                    <p>Michelle "MJ" Jones</p>
                 </div>
             </div>
 
+            <!-- Tarjeta 3: Ned Leeds -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_JACOB_BATALON.jpg" alt="Jacob Batalon">
@@ -218,6 +295,7 @@
                 </div>
             </div>
 
+            <!-- Tarjeta 4: Jean Grey -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_SOPHIE_TURNER.jpg" alt="Sophie Turner">
@@ -228,16 +306,18 @@
                 </div>
             </div>
 
+            <!-- Tarjeta 5: Frank Castle -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_JON_BERNTHAL.jpg" alt="Jon Bernthal">
                 </div>
                 <div class="cast-info">
                     <h3>Jon Bernthal</h3>
-                    <p>Frank Castle / The Punisher</p>
+                    <p>Frank Castle / Punisher</p>
                 </div>
             </div>
 
+            <!-- Tarjeta 6: Bruce Banner -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_MARK_RUFFALO.jpg" alt="Mark Ruffalo">
@@ -252,7 +332,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Spider-Man: Brand New Day Fan Page. Creado para GitHub Pages.</p>
+        <p>&copy; 2026 Spider-Man: Brand New Day Fan Page. Hecho por un verdadero fan para GitHub Pages.</p>
     </footer>
 
 </body>
