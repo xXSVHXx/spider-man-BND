@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spider-Man: Brand New Day</title>
     <style>
-        /* Paleta de colores y fuentes */
         @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;700&display=swap');
 
         :root {
@@ -30,15 +29,12 @@
             color: var(--spidey-red);
         }
 
-        /* Sección Hero (Frame de la película) */
+        /* Sección Hero con título abajo a la izquierda estilo póster */
         .hero {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 65vh;
             background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
             border-bottom: 5px solid var(--spidey-red);
         }
@@ -47,18 +43,28 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
-            transition: opacity 0.4s;
+            opacity: 0.75;
         }
 
-        .hero img:hover {
-            opacity: 0.9;
+        /* Degradado inferior para resaltar el texto */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(to top, rgba(5,10,16,0.95) 10%, rgba(5,10,16,0.5) 50%, transparent 100%);
+            pointer-events: none;
         }
 
         .hero-text {
             position: absolute;
-            text-align: center;
-            text-shadow: 3px 3px 6px #000;
+            bottom: 40px;
+            left: 50px;
+            z-index: 2;
+            text-align: left;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
         }
 
         .hero-text h1 {
@@ -66,12 +72,14 @@
             margin: 0;
             color: #fff;
             text-transform: uppercase;
+            line-height: 0.9;
         }
         
         .hero-text h2 {
             font-size: 2.5rem;
             color: var(--spidey-red);
-            margin-top: -10px;
+            margin: 5px 0 0 0;
+            letter-spacing: 3px;
         }
 
         /* Título de sección general */
@@ -109,7 +117,6 @@
             border-color: var(--spidey-red);
         }
 
-        /* Etiquetas para las partes de la historia */
         .story-badge {
             position: absolute;
             top: -20px;
@@ -137,7 +144,6 @@
             margin: 0;
         }
 
-        /* Alternar alineación para el estilo de cómic (Zig-Zag) */
         .story-block:nth-child(odd) {
             align-self: flex-start;
             border-left: 6px solid var(--spidey-red);
@@ -181,7 +187,6 @@
             border-radius: 15px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(226, 54, 54, 0.2);
-            position: relative;
             transition: transform 0.3s ease;
         }
 
@@ -201,7 +206,6 @@
             font-size: 1.8rem;
             color: #fff;
             margin-bottom: 20px;
-            font-family: 'Roboto', sans-serif;
             font-weight: 700;
             font-style: italic;
         }
@@ -213,7 +217,7 @@
             text-align: justify;
         }
 
-        /* Sección de Reparto (Cuadros) */
+        /* SECCIÓN DE REPARTO */
         .cast-section {
             max-width: 1200px;
             margin: 80px auto 50px auto;
@@ -269,7 +273,6 @@
             font-size: 0.9rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -280,19 +283,19 @@
             color: #777;
         }
 
-        /* Responsividad para móviles */
         @media (max-width: 768px) {
+            .hero-text { left: 20px; bottom: 20px; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .hero-text h2 { font-size: 1.8rem; }
             .story-block { width: 90%; align-self: center !important; text-align: left !important; border-right: none !important; border-left: 4px solid var(--spidey-red) !important; }
             .story-block:nth-child(even) .story-badge { right: auto; left: 30px; }
-            .consensus-quote { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FRAME DE LA PELÍCULA (HERO) -->
+    <!-- FRAME DE LA PELÍCULA (HERO) - Título abajo a la izquierda -->
     <header class="hero">
-        <!-- Reemplaza "URL_DE_TU_FRAME.jpg" con el enlace a tu imagen principal -->
         <img src="BND.jpg" alt="Frame de Spider-Man Brand New Day">
         <div class="hero-text">
             <h1>Spider-Man</h1>
@@ -300,7 +303,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE LA HISTORIA DIVIDIDA EN 4 BLOQUES -->
+    <!-- SECCIÓN DE LA HISTORIA -->
     <section>
         <h2 class="section-title">El Archivo Arácnido</h2>
         <div class="story-container">
@@ -332,7 +335,7 @@
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: OPINIÓN PÚBLICA -->
+    <!-- OPINIÓN PÚBLICA -->
     <section class="review-section">
         <h2 class="section-title">Recepción del Público</h2>
         <div class="consensus-box">
@@ -344,7 +347,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE REPARTO (CUADROS CON IMÁGENES) -->
+    <!-- SECCIÓN DE REPARTO -->
     <section class="cast-section">
         <h2 class="section-title">Reparto Principal</h2>
         <div class="cast-grid">
@@ -381,10 +384,10 @@
 
             <div class="cast-card">
                 <div class="cast-image-container">
-                    <img src="sadie.jpg" alt="Sophie Turner">
+                    <img src="sadie.jpg" alt="Sadie Sink">
                 </div>
                 <div class="cast-info">
-                    <h3>Sadie Sink</h3>
+                    <h3>Sophie Turner</h3>
                     <p>Jean Grey</p>
                 </div>
             </div>
