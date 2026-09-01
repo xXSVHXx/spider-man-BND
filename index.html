@@ -138,7 +138,6 @@
         }
 
         /* Alternar alineación para el estilo de cómic (Zig-Zag) */
-        /* Bloques Impares (1 y 3) - Izquierda */
         .story-block:nth-child(odd) {
             align-self: flex-start;
             border-left: 6px solid var(--spidey-red);
@@ -148,7 +147,6 @@
             left: 30px;
         }
 
-        /* Bloques Pares (2 y 4) - Derecha */
         .story-block:nth-child(even) {
             align-self: flex-end;
             border-right: 6px solid var(--spidey-red);
@@ -159,7 +157,6 @@
             right: 30px;
         }
 
-        /* Badge especial para los antecedentes */
         .badge-preludio {
             background-color: #555;
             box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
@@ -168,6 +165,52 @@
             background-color: var(--spidey-red);
             box-shadow: 0 4px 10px rgba(226, 54, 54, 0.5);
             transition: all 0.3s ease;
+        }
+
+        /* SECCIÓN DE OPINIÓN PÚBLICA */
+        .review-section {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .consensus-box {
+            background: linear-gradient(135deg, rgba(11,26,42,0.8) 0%, rgba(226,54,54,0.15) 100%);
+            border: 2px solid var(--spidey-red);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(226, 54, 54, 0.2);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .consensus-box:hover {
+            transform: scale(1.02);
+        }
+
+        .stars {
+            color: #ffcc00;
+            font-size: 3rem;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+        }
+
+        .consensus-quote {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .consensus-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #ddd;
+            text-align: justify;
         }
 
         /* Sección de Reparto (Cuadros) */
@@ -241,6 +284,7 @@
         @media (max-width: 768px) {
             .story-block { width: 90%; align-self: center !important; text-align: left !important; border-right: none !important; border-left: 4px solid var(--spidey-red) !important; }
             .story-block:nth-child(even) .story-badge { right: auto; left: 30px; }
+            .consensus-quote { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -261,28 +305,24 @@
         <h2 class="section-title">El Archivo Arácnido</h2>
         <div class="story-container">
             
-            <!-- Bloque PREVIO: ANTECEDENTES -->
             <div class="story-block">
                 <div class="story-badge badge-preludio">ANTECEDENTES</div>
                 <h3>El Sacrificio y el Olvido</h3>
                 <p>Hace cuatro años, para salvar el multiverso, Peter Parker tomó la decisión más difícil de su vida: pedirle al Doctor Strange que borrara su existencia de la memoria colectiva. Hoy, el mundo ama a Spider-Man, pero nadie sabe quién es el chico debajo de la máscara. Sus amigos, MJ y Ned, lograron entrar al MIT y continúan con sus vidas, completamente ajenos al sacrificio que les permitió tener un futuro. Sin familia, sin amigos y sin vida personal, Peter se sumergió por completo en su rol como justiciero, viviendo como un fantasma en su propia ciudad.</p>
             </div>
 
-            <!-- Bloque 1: INICIO -->
             <div class="story-block">
                 <div class="story-badge">PARTE 1: INICIO</div>
                 <h3>La Amenaza Invisible</h3>
                 <p>Operando 24/7 y colaborando estrechamente con la detective Jean DeWolff, la implacable rutina heroica de Peter se ve interrumpida por un enemigo nunca antes visto. Una misteriosa entidad psiónica comienza a poseer los cuerpos de los ciudadanos a voluntad. Saltando de huésped en huésped sin dejar rastro, este antagonista desata el caos con un objetivo claro: infiltrarse en las instalaciones de máxima seguridad del Departamento de Control de Daños (DODC) y liberar a criminales encarcelados.</p>
             </div>
 
-            <!-- Bloque 2: DESARROLLO -->
             <div class="story-block">
                 <div class="story-badge">PARTE 2: DESARROLLO</div>
                 <h3>Mutación y Colapso</h3>
                 <p>La tensión estalla cuando MJ y Ned regresan a Nueva York. Al presenciar a MJ feliz con una nueva pareja, Peter sufre un ataque de pánico severo que actúa como detonante de un trauma reprimido. Esto provoca una mutación violenta en su ADN: desarrolla telarañas orgánicas y sus instintos arácnidos se tornan salvajes e incontrolables. Dominado por esta agresividad, casi asesina a Scorpion a golpes. Aterrorizado de sí mismo, busca desesperadamente al Dr. Bruce Banner por una cura, pero la entidad psiónica descubre su identidad secreta y secuestra a MJ.</p>
             </div>
 
-            <!-- Bloque 3: CONCLUSIÓN -->
             <div class="story-block">
                 <div class="story-badge">PARTE 3: CONCLUSIÓN</div>
                 <h3>Redención Empática</h3>
@@ -292,12 +332,23 @@
         </div>
     </section>
 
+    <!-- NUEVA SECCIÓN: OPINIÓN PÚBLICA -->
+    <section class="review-section">
+        <h2 class="section-title">Recepción del Público</h2>
+        <div class="consensus-box">
+            <div class="stars">★★★★★</div>
+            <div class="consensus-quote">"La película más madura, cruda y emocionalmente devastadora del trepamuros hasta la fecha."</div>
+            <p class="consensus-text">
+                La crítica y los fans han llegado a un consenso abrumador: <em>Spider-Man: Brand New Day</em> marca un antes y un después en el cine de superhéroes. Se aplaude unánimemente la valentía de los guionistas al abandonar el tono juvenil para explorar el trauma psicológico y la desgarradora soledad de Peter Parker. La actuación de Tom Holland es considerada la mejor de su carrera, mostrando a un héroe roto que lucha por no perder su humanidad. Aunque algunos puristas se sorprendieron por la violencia de los combates —especialmente la cruda dinámica con The Punisher y la agresiva mutación de Peter—, la gran mayoría coincide en que este salto a la madurez era el paso orgánico que el personaje necesitaba. No es solo una película de acción; es un profundo estudio de personaje alabado globalmente por su brutal honestidad emocional.
+            </p>
+        </div>
+    </section>
+
     <!-- SECCIÓN DE REPARTO (CUADROS CON IMÁGENES) -->
     <section class="cast-section">
         <h2 class="section-title">Reparto Principal</h2>
         <div class="cast-grid">
             
-            <!-- Tarjeta 1: Peter Parker -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_TOM_HOLLAND.jpg" alt="Tom Holland">
@@ -308,7 +359,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 2: MJ -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_ZENDAYA.jpg" alt="Zendaya">
@@ -319,7 +369,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 3: Ned Leeds -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_JACOB_BATALON.jpg" alt="Jacob Batalon">
@@ -330,7 +379,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 4: Jean Grey -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_SOPHIE_TURNER.jpg" alt="Sophie Turner">
@@ -341,7 +389,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 5: Frank Castle -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_JON_BERNTHAL.jpg" alt="Jon Bernthal">
@@ -352,7 +399,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 6: Bruce Banner -->
             <div class="cast-card">
                 <div class="cast-image-container">
                     <img src="URL_FOTO_MARK_RUFFALO.jpg" alt="Mark Ruffalo">
